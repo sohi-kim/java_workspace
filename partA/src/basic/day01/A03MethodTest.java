@@ -48,7 +48,10 @@ public class A03MethodTest {
   // 메소드 이름 multiplyLong 은 리턴 타입이 long 으로 변경해서 테스트 해보세요.
   public static long multiplyLong(int x , int y){
     System.out.println("두 개의 정수를 곱하는 메소드 multiply 실행 중");
-    return x*y;
+    
+    //int 정수 * int 정수 는 결과도 int 정수 형식. => x,y 둘 중 하나를 long 변경
+
+    return (long)x*y;    //x를 long 으로 형변환
   }
 
 }
