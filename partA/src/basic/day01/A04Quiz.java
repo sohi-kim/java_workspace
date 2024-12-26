@@ -56,5 +56,10 @@ public class A04Quiz {
     }
   
 
+    // A07 예제 테스트용
+    private static void printQuiz(){
+      System.out.println("자바 첫째날 메소드 연습 클래스");
+    }
+
 
 } // class end
