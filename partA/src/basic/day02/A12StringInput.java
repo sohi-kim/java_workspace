@@ -27,7 +27,6 @@ public class A12StringInput {
         System.out.println("입력한 아이디 확인 : " + userid);
         
       }
-      
 
       sc.close();     //입력 자원 사용 종료(닫기)
   }
