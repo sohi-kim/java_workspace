@@ -1,7 +1,7 @@
 package basic.day02;
 
 public class A11StringEquals {
-
+ 
   // 문자열의 비교 
   // 1) == 기호 는 저장된 주소를 비교합니다.
   // 2) equals 메소드는 저장된 내용을 비교합니다.
@@ -32,6 +32,16 @@ public class A11StringEquals {
 
  // 문자열의 내용 비교 메소드
     System.out.println("lesson.equals(title) : " + lesson.equals(title));
+
+ // 문자열 비교는 대부분 내용 비교입니다. equals 메소드 중요합니다.
+ 
+    //문자열의 길이가 0인지 참 또는 거짓으로 리턴 
+    System.out.println("isEmpty : " + " ".isEmpty());  // false
+    System.out.println("isEmpty : " + "".isEmpty());  // true
+    
+    //문자열의 내용이 공백(길이가 0 도 포함)인지 boolean 리턴
+    System.out.println("isBlank : " + "  ".isBlank());  // true
+    System.out.println("isBlank : " + "".isBlank());  // true
 
 
   }

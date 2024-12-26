@@ -1,6 +1,7 @@
 package basic.day02;
 
 // 문자열 저장 및 활용 : 자바에서 문자열은 String 클래스 타입입니다.
+//                                  ㄴ 참조타입 변수(그림 참고)
 // int, long, double,boolean 등은 기본형(primitive) 데이터 타입.
 public class A10StringTest {
 
