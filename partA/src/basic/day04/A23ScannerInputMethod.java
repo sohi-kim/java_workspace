@@ -7,7 +7,7 @@ public class A23ScannerInputMethod {
   // Scanner sc = new Scanner(System.in)
   //         sc 로 사용할 수 있는 메소드 : next() , nextLine() , nextInt()
   
-  // 전역변수
+  // 전역변수 : 설명은 객체에서 합니다.
   static Scanner sc = new Scanner(System.in);
 
   public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class A23ScannerInputMethod {
   public static void nextLineTest(){
        // 1. nextLine() 메소드  : 줄 단위로 엔터를 포함해서 입력버퍼의 내용을 문자열로 저장.
        String str3 = sc.nextLine();
-       String str4 = sc.next();      // 엔터를 안가져가요. 
+       String str4 = sc.next();      
       // int num1 = sc.nextInt();
             
       System.out.println("str3: " + str3 + ", str4 : " + str4);
@@ -40,7 +40,7 @@ public class A23ScannerInputMethod {
   }
   public static void nextLineTest2(){
     // 1. nextLine() 메소드
-    String str3 = sc.next();
+    String str3 = sc.next();            // 엔터를 안가져가요. 
     String str4 = sc.nextLine();        // next() 버퍼에 두고간 엔터를 nextLine이 가져감.
    // int num1 = sc.nextInt();
          
