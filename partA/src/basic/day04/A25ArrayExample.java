@@ -42,11 +42,32 @@ public class A25ArrayExample {
           System.out.print(scores[i] + "\t");  // {97,77,109,66,82}
 
     System.out.println("scores 배열의 참조값 : " + scores);      
+    
+    int[] testarr = new int[7];
+    arraysChg(testarr);
+    System.out.println("testarr 배열의 참조값 : " + testarr);   
+
+    // 5) 배열을 리턴하는 메소드
+    int[] newarr = makeArray(10);
+    System.out.println("newarr 배열의 참조값 : " + newarr);  
+    // newarr은 makeArray 메소드로부터 새로운 배열의 주소를 리턴 받음.
+    for(int i=0;i<newarr.length;i++)
+        System.out.print(newarr[i] + " ,");
+
+    // 6) 배열 복사하기   
+    System.out.println("\n///////////");
+    int[] newarr2 = copyArray(scores);             
+    // scores 값을 복사하여 새로운 배열 newarr2 만들기
+    System.out.println("scores 배열의 참조값 : " + scores);     
+    System.out.println("newarr2 배열의 참조값 : " + newarr2);   
+    for(int i=0;i<newarr2.length;i++)
+        System.out.print(newarr2[i] + " ,");
 
   }
 
   // 배열을 전달받아서 배열 요소를 모두 곱합니다.
-  // 인자 선언은 지역변수 선언. 배열할당은 호출할 때 전달.
+  // 인자 선언은 지역변수 선언. 
+  // array 배열은 초기값X, 크기X 아직 모름 => 배열할당은 호출할 때 전달.
   public static long arraysMul(int[] array){
     long result = 1;
     for(int i=0;i<array.length;i++)
@@ -62,5 +83,21 @@ public class A25ArrayExample {
     System.out.println("array 배열의 참조값 : " + array);
   }
 
+  public static int[] makeArray(int size){
+      int[] results = new int[size];   // size 값에 따라 배열의 크기 결정
+      for(int i=0;i<size;i++)
+          results[i] = i*11;       // 0, 11,22,33,44,55...
+      System.out.println("results 배열의 참조값 : " + results);
+      return results;   // results 배열의 주소값을 호출한 main 에 전달합니다.
+  }
 
+  // 퀴즈 : '배열을 인자로 받아서' 요소 값을 복사한 '새로운 배열을 리턴'하기
+  //          copyArray
+  public static int[] copyArray(int[] array){
+    int[] results = new int[array.length];   // results 초기값은 모두 0
+    for(int i=0;i<array.length;i++)
+        results[i]=array[i];    //배열 요소값 복사
+
+    return results;    
+  }
 }
