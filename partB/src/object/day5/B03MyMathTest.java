@@ -14,7 +14,10 @@ public class B03MyMathTest {
       myMath.print(2);    // 234 - 456 = -222
       myMath.print(3);    // 234 * 456 = 106704
 
-   
+     System.out.println("==== 메소드 호출할 때 연산 선택하면 문자열 리턴 ====");
+     System.out.println(myMath.mathToString(MyMath.ADD));
+     System.out.println(myMath.mathToString(MyMath.SUB));
+     System.out.println(myMath.mathToString(MyMath.MUL));
 
       System.out.println("=== 초기값 테스트 ===");
       MyMath temp = new MyMath();   // first, second 필드값이 처음부터 0 으로 저장.

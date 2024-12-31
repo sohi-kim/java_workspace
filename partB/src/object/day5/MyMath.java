@@ -56,18 +56,18 @@ public class MyMath {
       }
 
 
-      // 유형 3: 유형 2와 동작은 유사. 단, 문자열 리턴값을 갖고 static final 상수(기호) 활용.
+      // *유형 3*: 유형 2와 동작은 유사. 단, 문자열 리턴값을 갖고 static final 상수(기호) 활용.
       public String mathToString(int type){
-        String result;
+        String result;   //선언
         switch (type) {
           case ADD:    // 정수값 1 비교
             result = String.format("%d + %d = %d", this.first,this.second,add());
             break;
           case SUB:
-            result = String.format("%d + %d = %d", this.first,this.second,substract());
+            result = String.format("%d - %d = %d", this.first,this.second,substract());
             break;
           case MUL:
-            result = String.format("%d + %d = %d", this.first,this.second,multiply());
+            result = String.format("%d x %d = %d", this.first,this.second,multiply());
             break;
           default:
             result = "잘못된 type 입니다.";
