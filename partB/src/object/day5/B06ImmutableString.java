@@ -5,6 +5,7 @@ package object.day5;
 public class B06ImmutableString {
 
    //자바에서는 문자열이 String 클래스 타입. => 불변성을 갖는 객체
+   //           일반적으로 객체는 요소값을 변경할 수 있습니다.(불변성 아님)
 
    public static void main(String[] args) {
     
