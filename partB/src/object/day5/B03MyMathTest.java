@@ -19,6 +19,15 @@ public class B03MyMathTest {
      System.out.println(myMath.mathToString(MyMath.SUB));
      System.out.println(myMath.mathToString(MyMath.MUL));
 
+     System.out.println("=== 새로운 객체 생성 ===");
+     MyMath myMath2 = new MyMath(); 
+     myMath2.first = 9999;
+     myMath2.second = 23;
+     System.out.println(myMath2.mathToString(MyMath.ADD));
+     System.out.println(myMath2.mathToString(MyMath.SUB));
+     System.out.println(myMath2.mathToString(MyMath.MUL));
+
+
       System.out.println("=== 초기값 테스트 ===");
       MyMath temp = new MyMath();   // first, second 필드값이 처음부터 0 으로 저장.
       System.out.println("temp.add() : " + temp.add());   // 0
