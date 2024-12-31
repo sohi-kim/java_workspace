@@ -57,4 +57,16 @@
 
 - \"
 - \n  : 줄바꿈
-- \t  : 탭(tab). 일정 간격을 두고 커서 이도
+- \t  : 탭(tab). 일정 간격을 두고 커서 이동
+
+
+
+### 변수의 유형
+
+- 1. 기본형 : byte,short,char,int,long,float,double
+
+- 2. 참조형 : String 등 클래스 타입 변수와 배열
+      + 참조형 타입 변수는 '데이터(문자열, 배열, 객체)의 주소를 저장'
+      + Scanner sc = new Scanner(System.in);
+      + int[] arr = new int[10];
+      + 참조형 변수가 메소드의 인자 또는 리턴으로 사용되면 주소를 전달합니다.
