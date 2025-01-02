@@ -12,7 +12,23 @@ public class AnimalFarmEnum {
       System.out.println(maru.toString());
       System.out.println(pepper.toString());
       System.out.println(donald.toString());
-    }
+
+      // Animal 타입 배열 선언 : 크기는 5
+      Animal2[] farm = new Animal2[5];
+      farm[0]=maru;
+      farm[1]=pepper;
+      farm[2]=donald;
+      farm[4] = new Animal2(AnimalEnum.MOUSE, "미키", 1, "화이트");
+      System.out.println("== 배열 테스트 ==");
+      for(Animal2 a : farm){
+          if(a !=null)   //NullPointerException 방지를 위한 조건식.
+                System.out.println(a.toString());
+      }
+// 오류 : **NullPointerException**: 
+//     Cannot invoke "object.day6.Animal2.toString()" ** because "a" is null**
+//  farm 배열의 인덱스 3번이 객체 참조가 없으므로 null. 
+//  null일때에는 인스턴스 메소드 실행할 수 없습니다.(오류)
+   }
 }
 
 class Animal2 {
