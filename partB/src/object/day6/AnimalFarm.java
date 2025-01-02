@@ -5,7 +5,7 @@ public class AnimalFarm {
       
       Animal maru = new Animal("DOG", "마루",12, "브라운");
       Animal pepper = new Animal("CAT", "후추",4, "블랙");
-      Animal donald = new Animal("DUCK", "도날드",4, "블랙");
+      Animal donald = new Animal("DUCK", "도날드",6, "그레이");
       System.out.println(maru.toString());
       System.out.println(pepper.toString());
       System.out.println(donald.toString());
@@ -75,7 +75,8 @@ class Animal {
 
 
   public String toString() {
-    return "Animal [type=" + type + ", name=" + name + ", age=" + age + ", color=" + color + "] " + sound();
+    return "Animal [type=" + this.type + ", name=" + this.name + ", age=" 
+                  + this.age + ", color=" + this.color + "] " + this.sound();
   }
   
 
