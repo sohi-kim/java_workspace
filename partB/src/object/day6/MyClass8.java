@@ -17,3 +17,28 @@ public class MyClass8 {
   // 필요하면 기본생성자 정의 합니다.
 
 }
+
+// 기본생성자와 커스텀 생성자를 모두 정의
+class MyClass9 {
+
+  String field1;
+  int field2;
+
+  // 생성자 : 메소드 오버로딩 적용할 수 있습니다.
+  MyClass9() {
+  }
+
+  MyClass9(String field1){
+    this.field1 = field1;
+  }
+
+  MyClass9(int field2){
+    this.field2 = field2;
+  }
+
+  MyClass9(String field1, int field2){
+    this.field1 = field1;
+    this.field2 = field2;
+  }
+
+}

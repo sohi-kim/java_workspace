@@ -7,7 +7,7 @@ public class MyMath {
       // 클래스의 인스턴스 변수 선언 : 객체를 생성한 후 값을 대입
       int first;
       int second;
-      int result;    // 사용 보류
+     
 
       // 상수 static final 활용
       static final int ADD = 1;
