@@ -17,16 +17,38 @@ public class Day6ReviewApp {
       // toScore 메소드를 이용하여 각 객체의 필드값을 출력하기
       System.out.println("=== 성적 데이터 출력 ===");
       for(int i=0;i<5;i++){
-        String temp = stuScores[0].toScore();
-        System.out.println(temp);
-      }
-
-      System.out.println("========================");
-      for(int i=0;i<5;i++){
         String temp = stuScores[i].toScore();
         System.out.println(temp);
       }
 
+      System.out.println("==== 저장된 객체들 중 '점수'만 출력하기 === ");
+      for(int i=0;i<5;i++){
+        // System.out.println(i + ":" + stuScores[i].jumsu);    //jumsu 는 private 필드-오류
+        System.out.println(i + ":" + stuScores[i].getJumsu());
+      }
+
+      System.out.println("==== 저장된 객체들 중 '점수'가 85점 이상인 것만 과목명,점수 출력하기 === ");
+      for(int i=0;i<5;i++){
+        if(stuScores[i].getJumsu() >= 85){
+          System.out.println( stuScores[i].getSubject() + ":" + stuScores[i].getJumsu());
+        }
+      }
+
+      System.out.println("==== GradeType 값에 따라 각각 개수 구하기 ==== ");
+      int cnt1=0,cnt2=0,cnt3=0;
+      // 열거형 값 비교
+      for(int i=0;i<5;i++){
+          if(stuScores[i].getGrade()==GradeType.GRD1){
+              cnt1++;
+          }else if(stuScores[i].getGrade()==GradeType.GRD2){
+              cnt2++;
+          }else if(stuScores[i].getGrade()==GradeType.GRD3){
+              cnt3++;
+          }
+      }
+      // 출력예시
+      // GRD1  : 2명  , GRD2 : 2명 , GRD3 : 1명
+      System.out.println("GRD1 : " + cnt1 + " 명 , GRD2 : " + cnt2 + " 명 , GRD3 : " + cnt3 + " 명");
 
     }
 }
@@ -51,7 +73,17 @@ class Score {
     }
 
     // private 한 필드에 접근하는 메소드 : getter, setter 
+    public int getJumsu(){
+      return this.jumsu;
+    }
 
+    public String getSubject(){
+      return this.subject;
+    }
+
+    public GradeType getGrade(){
+      return this.grade;
+    }
 
     // 기능과 관련 인스턴스 메소드 
     //      1. 모든 값을 출력할 때 사용할 문자열 만들기
