@@ -19,12 +19,14 @@ public class B12ScoreApp {
       // 길순, GRD2, 파이썬, 88
       Scanner sc = new Scanner(System.in);
       boolean run=true;
-      int index =5;
+      int index =5;     // 설명:
       while(run){
         System.out.print(" 이름 >>> ");
         String name = sc.next();
         System.out.print(" 학년(1,2,3) >>> ");
         int grade = sc.nextInt();
+        
+        // 설명:
         GradeType gradeType = switch(grade){
           case 1 -> GradeType.GRD1;
           case 2 -> GradeType.GRD2;
@@ -35,9 +37,8 @@ public class B12ScoreApp {
         String subject = sc.next();
         System.out.print(" 점수 >>> ");
         int jumsu = sc.nextInt();
-        // 위의 입력값으로 새로운 객체를 만듭니다.-> 배열에 저장합니다.
-        stuScores[index] = new Score(name, gradeType, subject, jumsu);
-
+        // 위의 입력값으로 새로운 Score 객체를 만듭니다.-> 배열에 저장합니다.
+        stuScores[index] = new Score(name, gradeType, subject, jumsu);  // 설명:
 
         //새로만든 객체의 출력 : toScore 메소드 사용하세요.
         System.out.println("객체가 생성되었습니다. " + stuScores[index].toScore() );
@@ -54,15 +55,15 @@ public class B12ScoreApp {
             System.out.println(stuScores[i]);
       } */
       int sum=0;
-      for( Score  temp : stuScores){
+      for( Score  temp : stuScores){    // 설명:
         System.out.println(temp);
-        if(temp!=null){    
+        if(temp!=null){      // 설명:
             sum += temp.getJumsu();
         }
         System.out.println("중간 합계 : "+ sum);
       }
       System.out.println("총 점수 합계 : " + sum);
-      System.out.println("점수 평균 : " + (double)sum/(index+1));
+      System.out.println("점수 평균 : " + (double)sum/(index+1));  // 설명:
       sc.close();
 
   }
