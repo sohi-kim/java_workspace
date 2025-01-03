@@ -1,14 +1,15 @@
 package object.day6;
 
+// 연산 : +,-,*   추가연산 : 몫( / , DIV ), 나머지(% , MOD )
 public class MyMathV3 {
 
-    private int first;
-    private int second;
-    private OperationType opType;
+    private int first;   //연산할 값1
+    private int second;  //연산할 값2
+    private OperationType opType;    //연산자
     private char opChar;
     private long answer;
 
-    // 1. 생성자
+    // 1. 생성자  : 인스턴스 값의 초기화
     public MyMathV3(int first, int second, OperationType opType){
         this.first = first;
         this.second = second;
@@ -53,11 +54,12 @@ public class MyMathV3 {
       return result;
     }
 
+    //정답을 출력할 문자열
     public String toString(){
       return String.format("%d %c %d = %d",
           this.first, this.opChar,this.second,calculate());
     }
-    
+    // 문제를 출력하는 메소드
     public void printProblem(){
       System.out.print(String.format("%d %c %d = ?  >>> ",
           this.first, this.opChar,this.second));
