@@ -19,7 +19,7 @@ public class Parent {
 class Child extends Parent{
 
     Child() {
-      super();        // 부모 생성자 호출
+      // super();        // 부모 생성자 호출
       System.out.println("Child 객체 생성 ");
     }
 
