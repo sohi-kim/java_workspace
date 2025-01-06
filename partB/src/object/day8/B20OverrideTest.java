@@ -22,7 +22,7 @@ class GoodChild extends Parent {
   //              부모 메소드의 리턴과 인자 형식은 변경할 수 없습니다.
   @Override
   void hello(String message) {
-    super.hello(message);    // 필요하다면, 부모 메소드 실행.
+    super.hello(message);    //  부모 메소드 실행하는 방법. super 키워드 사용하기
     System.out.println("안녕하세요. 새로운 GoodChild 입니다.");
   }
 }
