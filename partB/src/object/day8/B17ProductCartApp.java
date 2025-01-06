@@ -26,9 +26,22 @@ public class B17ProductCartApp {
 
           // cart 리스트에 담긴 Product 객체의 물품 가격 합계를 구해 보세요.
           int sum=0;
-          
+          // 1) 인덱스 사용하는 for문  : cart.get(i)
+          for(int i=0;i<cart.size();i++){
+            int temp = cart.get(i).getPrice();    // 
+            sum += temp;
+            System.out.println(cart.get(i).toString());
+          }
+          System.out.println("cart 가격 합계 : " + sum);
 
-
+          sum=0;
+          System.out.println("////// ////");
+          // 2) 향상 for문  : cart.get(i) 는 자동으로 처리(Product 타입 변수에 하나씩 참조)됩니다.
+          for(Product p : cart){
+              sum += p.getPrice();
+              System.out.println(p.toString());
+          }
+          System.out.println("cart 가격 합계 : " + sum);
         }
 
 }
@@ -56,5 +69,8 @@ class Product {
   
 
   // getter, setter 는 필요시 만들어 봅니다.
+  public int getPrice(){
+      return this.price;
+  }
 
 }
