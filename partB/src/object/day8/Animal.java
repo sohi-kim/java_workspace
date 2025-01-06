@@ -36,6 +36,7 @@ class Eagle extends Animal {
 
   // 2. 부모 클래스의 인스턴스 메소드 재정의
   @Override
+  //   ㄴ 애노테이션으로 재정의 메소드의 문법(형식) 체크
   public void sound() {
      super.sound();
      System.out.println("🐦휘이잉");

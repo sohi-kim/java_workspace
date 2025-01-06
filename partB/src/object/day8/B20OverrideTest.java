@@ -13,7 +13,6 @@ public class B20OverrideTest {
     p2.hello("hello~");
 
   }
-
 }
 
 class GoodChild extends Parent {
