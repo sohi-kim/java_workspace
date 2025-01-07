@@ -1,5 +1,6 @@
-package object.day8;
+package object.day9;
 
+// day8 Shape 과 동일한 소스파일
 public class Shape {
 
   protected String shName;
@@ -70,7 +71,7 @@ class Circle extends Shape {
 
   protected int radius;
 
-  public Circle(int radius){
+  Circle(int radius){
     this.shName = "원 Circle";
     this.radius = radius;
   }
