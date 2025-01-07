@@ -12,7 +12,7 @@ public abstract class AbstractAnimal {
 
       public abstract void sound();
       public abstract boolean isFly();
-      public abstract String todo();
+      public abstract String todo(String task);
 
       @Override
       public String toString() {
@@ -39,8 +39,8 @@ class ACat extends AbstractAnimal {
     }
 
     @Override
-    public String todo() {
-    return "catch a mouse";
+    public String todo(String task) {
+    return "할일 : " + task;
     }
 }
 
@@ -64,8 +64,8 @@ class ADog extends AbstractAnimal {
   }
 
   @Override
-  public String todo() {
-  return "집 지키기";
+  public String todo(String task) {
+  return "할일 : " + task;
   }
 }
 
@@ -87,7 +87,7 @@ class AFrog extends AbstractAnimal {
   }
 
   @Override
-  public String todo() {
-  return "rain forecast";
+  public String todo(String task) {
+  return "할일 : " + task;
   }
 }
