@@ -21,9 +21,9 @@ public class B22ShapeTest {
       // 위의 3개의 객체를 모두 하나의 자료구조(배열 또는 리스트)에 저장해야 한다면
       // => UpCasting
       ArrayList<Shape> list = new ArrayList<>();
-      list.add(tri);
-      list.add(rec);
-      list.add(cir);
+      list.add(tri);   // 인덱스 0
+      list.add(rec);   // 인덱스 1
+      list.add(1,cir);   // 인덱스 2
 
       System.out.println("// 인덱스 지정해서 가져오기 //");
       System.out.println(list.get(0).toString() + " 넓이 = " + list.get(0).area());
