@@ -24,6 +24,16 @@ public abstract class AbstractShape {
     return height;
   }
 
+  @Override
+  public String toString() {
+    return "AbstractShape [width=" + width + ", height=" + height + 
+    ", area()=" + area() + ", getClass()=" + getClass() + "]";
+  }
+
+  
+
+  
+
 }
 
 // ※ 추상클래스 상속할 때 반드시 모든 추상메소드 재정의 해야함. ※
