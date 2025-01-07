@@ -40,7 +40,7 @@ class ACat extends AbstractAnimal {
 
     @Override
     public String todo(String task) {
-    return "할일 : " + task;
+    return "오전 할일 : " + task;
     }
 }
 
@@ -65,7 +65,7 @@ class ADog extends AbstractAnimal {
 
   @Override
   public String todo(String task) {
-  return "할일 : " + task;
+  return "오후 할일 : " + task;
   }
 }
 
@@ -88,6 +88,6 @@ class AFrog extends AbstractAnimal {
 
   @Override
   public String todo(String task) {
-  return "할일 : " + task;
+  return "저녁 할일 : " + task;
   }
 }
