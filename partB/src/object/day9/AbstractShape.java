@@ -26,7 +26,7 @@ public abstract class AbstractShape {
 
 }
 
-// 추상클래스 상속할 때 반드시 모든 추상메소드 재정의 해야함.
+// ※ 추상클래스 상속할 때 반드시 모든 추상메소드 재정의 해야함. ※
 class ARectangle extends AbstractShape {
 
      ARectangle(int width,int height){
@@ -46,4 +46,23 @@ class ARectangle extends AbstractShape {
 }
 
 // ATriangle
+class  ATriangle extends AbstractShape {
 
+  ATriangle(int width, int height){
+    super(width, height);
+  }
+
+  @Override
+  public long area() {
+    return (this.width * this.height) /2;
+  }
+
+  @Override
+  public long length() {
+    long halfWidth = (long)(width / 2.0);
+    long sideLength = (long)Math.sqrt(Math.pow(halfWidth, 2) + Math.pow(height, 2));
+        
+    // 둘레 계산
+    return width + 2 * sideLength;
+  }
+}
