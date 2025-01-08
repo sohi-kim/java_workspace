@@ -27,6 +27,7 @@ public class B32LambdaTest {
         
       }
     };
+    test3.execute("헬로우");
 
     // 람다식으로 하면?
     Test2Function test4 = (message) ->  System.out.println("메시지 =" + message);
