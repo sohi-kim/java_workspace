@@ -1,6 +1,8 @@
 package object.day10;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -34,5 +36,20 @@ public class B33FuntionalInterface {
     // 실행
     System.out.println(function.apply(10.0));    // 2의 10승 
 
+
+    System.out.println("함수형 인터페이스가 인자인 예시 //");
+    List<String> members = new ArrayList<>();
+    members.add("사나");  members.add("모모"); members.add("나연"); members.add("다현");
+    System.out.println("// for 문 //");
+    for(String temp : members){
+      System.out.println(temp);
+    }
+
+    System.out.println("// 리스트의 forEach 메소드 //");
+    members.forEach(consumer);   // members 리스트의 항목을 순서대로 consumer의 인자로 전달.
+
+    members.forEach(
+      (item) -> System.out.println("*" + item + "*")   // 인자를 받아서 출력하는 추상메소드 구현
+    );
   }
 }
