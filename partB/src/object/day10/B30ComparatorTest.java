@@ -40,6 +40,24 @@ public class B30ComparatorTest {
       System.out.println("나이 필드 오름차순 정렬한 결과 //");
       System.out.println(Arrays.toString(members));
 
+      Comparator<Member> ageDecending = new Comparator<Member>() {
+        @Override
+        public int compare(Member o1, Member o2) {
+          return o2.getAge() - o1.getAge();
+        }
+      };
+      // Arrays.sort(members,ageDecending);
+      // 익명 클래스를 사용하는 주요 방식
+      Arrays.sort(members,new Comparator<Member>() {
+        @Override
+        public int compare(Member o1, Member o2) {
+          return o2.getAge() - o1.getAge();
+        }
+      });
+      System.out.println("나이 필드 내림 차순 정렬한 결과 //");
+      System.out.println(Arrays.toString(members));
+
+
   }
 }
 
