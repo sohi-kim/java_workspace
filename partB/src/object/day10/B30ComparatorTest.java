@@ -1,6 +1,7 @@
 package object.day10;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class B30ComparatorTest {
   public static void main(String[] args) {
@@ -24,21 +25,21 @@ public class B30ComparatorTest {
       Arrays.sort(members, new DecendingNameComparator());
       System.out.println("이름 필드 내림차순 정렬한 결과 //");
       System.out.println(Arrays.toString(members));
+
+
+      // 나이 필드값 정렬 - 인터페이스의 익명 클래스로 만들어 봅니다.
+      // 비교자
+      Comparator<Member> ageAscending = new Comparator<Member>() {
+        @Override
+        public int compare(Member o1, Member o2) {
+          return o1.getAge()-o2.getAge();
+        }
+      };
+
+      Arrays.sort(members, ageAscending);
+      System.out.println("나이 필드 오름차순 정렬한 결과 //");
+      System.out.println(Arrays.toString(members));
+
   }
 }
 
-class Member  {
-  private String name;
-  private int age;
-
-  Member(String name, int age){
-    this.name=name;
-    this.age=age;
-  }
-
-  @Override
-  public String toString() {
-    return "Member [name=" + name + ", age=" + age + "]";
-  }
-
-}
