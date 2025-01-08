@@ -2,6 +2,7 @@ package object.day10;
 
 import java.util.Comparator;
 
+// Comparator 구현 클래스 입니다. -> sort 할 때에는 객체생성(구현체)해서 전달
 public class AscendingNameComparator implements Comparator<Member>{   
   // '이름'으로 오름 차순
 
