@@ -36,6 +36,13 @@ public class B32LambdaTest {
     test4.execute("hello");
     // test4.execute(99);   //오류: 인터페이스에서 선언한 추상메소드 인자 타입과 일치해야 함.
 
+
+    Test3Function test5 = (a,b) -> {return a+b; };
+    System.out.println(test5.execute(34, 23));
+
+    Test4Function test6 = () -> {return 100;};
+    System.out.println(test6.execute());
+
   }
 
 }
