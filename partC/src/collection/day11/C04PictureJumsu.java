@@ -26,33 +26,41 @@ public class C04PictureJumsu {
           }         
           
           System.out.println("// 문제 풀이 //");
-          String[] name = {"may","kein","kain","radi"};
-          int[] yearning = {5,10,1,3};
-          int[] answer = new int[photo.length];   // 답 저장 배열
+          String[] name = {"kali","mari","don"};    //{"may","kein","kain","radi"};
+          int[] yearning = {11,1,55};   //{5,10,1,3};
+          String[][] photo2 = {
+                {"kali","mari","don"},
+                {"pony","tom","teddy"},
+                {"con","mona","don"}
+          };
 
-          for(int i=0;i<photo.length;i++) {    // 큰 배열 반복
-            int sum=0;    // 각 사진의 점수 함계
-            List<String> list = Arrays.asList(name);  //인덱스 검색을 위한 변환
-            for(int j=0;j<photo[i].length;j++) {    // 작은 배열 값 하나씩 출력
-              // System.out.println(photo[i][j]);
-              int idx = list.indexOf(photo[i][j]);   //사진 인물의 인덱스
-              if(idx > -1) {
-                sum += yearning[idx];   // 같은 인덱스 위치에서 점수 가져오기
-                System.out.println("idx=" + idx + ", 점수 =" + yearning[idx]);
-              }
-            answer[i]=sum;
-            System.out.println(i + " 위치의 점수 =" + answer[i]); 
-            // 19 , 15 , 16
-          }      
+          int[] result = new Solution().solution(name, yearning, photo2);
+          System.out.println(Arrays.toString(result));  // 답 출력
 
-
-      }  // for end
-
+          
   } // main end
 }
+
 class Solution {
   public int[] solution(String[] name, int[] yearning, String[][] photo) {
-      int[] answer = {};
+    int[] answer = new int[photo.length];   // 답 저장 배열
+
+    for(int i=0;i<photo.length;i++) {    // 큰 배열 반복
+          int sum=0;    // 각 사진의 점수 함계
+          List<String> list = Arrays.asList(name);  //인덱스 검색을 위한 변환
+          for(int j=0;j<photo[i].length;j++) {    // 작은 배열 값 하나씩 출력
+            // System.out.println(photo[i][j]);
+            int idx = list.indexOf(photo[i][j]);   //사진 인물의 인덱스
+            if(idx > -1) {
+              sum += yearning[idx];   // 같은 인덱스 위치에서 점수 가져오기
+              System.out.println("idx=" + idx + ", 점수 =" + yearning[idx]);
+            }
+          answer[i]=sum;
+        }      // for end
+        System.out.println(i + " 위치의 점수 =" + answer[i]); 
+        // 19 , 15 , 16
+    }  // for end
+
       return answer;
   }
 }
