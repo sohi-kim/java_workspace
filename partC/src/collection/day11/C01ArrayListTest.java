@@ -6,8 +6,8 @@ import java.util.List;
 
 //ArrayList
 public class C01ArrayListTest {
-  // 메소드 : add(값) , get(인덱스) , remove(값 또는 인덱스) , set(인덱스, 값)
-  //          contains(값) , indexOf(값)
+  // 메소드 : add(값) , get(인덱스) , remove(값 또는 인덱스) , set(인덱스, 값) ,size()
+  //          contains(값) , indexOf(값) => 검색
   public static void main(String[] args) {
 
         //리스트를 만드는 방법 1
@@ -32,7 +32,13 @@ public class C01ArrayListTest {
       //    -> 자바 JDK 에서 List 의 'toString 메소드를 재정의 '했습니다.
 
 
-        // 방법 1은 가변 객체 List , 방법 2와 3은 불변 객체 List
-    
+        // 방법 1은 가변 객체 List , 방법 2와 3은 불변(Immutable) 객체 List
+        // 처음 생성된 List 에 데이터 항목을 추가 또는 삭제 할 수 있으면 가변
+
+        // List.of
+        // test.add("모모");   // Immutable 객체. 오류
+        // Arrays.asList
+        // alist.add("모모");
+
   }
 }
