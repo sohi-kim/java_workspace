@@ -34,6 +34,7 @@ public class B33FuntionalInterface {
     Function<Double, Double> function = (d) -> Math.pow(2,d);     // return 생략
     // Math.pow(a,b) 는 a의 b승 구합니다.
     // 실행
+    double result = function.apply(10.0);   // 리턴 타입 Double 을 기본형 double
     System.out.println(function.apply(10.0));    // 2의 10승 
 
 
