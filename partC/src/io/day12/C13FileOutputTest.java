@@ -2,7 +2,7 @@ package io.day12;
 
 import java.io.FileOutputStream;
 
-// 표준 입력 스트림 -> 파일 출력 스트림
+// '표준 입력' 스트림 -> '파일' 출력 스트림
 public class C13FileOutputTest {
 
    public static void main(String[] args) {
