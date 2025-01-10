@@ -11,9 +11,11 @@ public class C10CheckedException {
   // java.io.File 클래스 : 운영체제의 파일 시스템을 다룰수 있습니다.
   public static void main(String[] args) throws IOException {
     
-        // File file = new File("예외.txt");
-        File file = new File("README.md");
+        File file = new File("예외.txt");
+        // File file = new File("README.md");
         System.out.println(file.exists());
+        file.delete();  // 파일 삭제
+        file.renameTo(new File("exception.txt"));  // 파일명 변경
 
         try {
           if(file.exists()){
@@ -39,7 +41,9 @@ public class C10CheckedException {
   // throws : createFile 메소드를 호출하는 곳에서 예외를 처리하도록 위임(떠넘기다.)
   public void createFile(File file) throws IOException{
             file.createNewFile();
-
+  
   }
+
+  
 
 }

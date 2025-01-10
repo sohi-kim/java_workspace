@@ -15,3 +15,23 @@
   + List 를 구현한 클래스 : ArrayList, LinkedList
   + Set 을 구현한 클래스 : HashSet, TreeSet
   + Map을 구현 클래스  : HashMap, TreeMap
+
+### 예외 (Exception)
+
+- 프로그램 실행 중 발생하는 비정상적인 상황
+
+- 클래스 구조
+
+  java.lang.Throwable 클래스
+              ㄴ Error : 에러. 일반적이지 않은 치명적인 상황
+              ㄴ Exception : 예외
+                      ㄴ 실행 중에 발생하는 RuntimeException 
+                      ㄴ 컴파일이 반드시 처리하도록 하는 체크 익셉션이 여러가지 있습니다.
+                      (대표적인 것이 IOException)
+                      ㄴ 그 외에 많은 자식 클래스 들이 정의되어 있습니다.
+
+- 예외 처리 방법 
+ + try ~ catch
+ + throws
+
+- 예외 발생하기 : 
