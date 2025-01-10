@@ -2,7 +2,7 @@ package io.day12;
 
 import java.io.IOException;
 
-public class C12StandartIOTest {
+public class C12StandardIOTest {
 
   // 표준 입력 스트림 : 콘솔(키보드) -> 입력버퍼 -> 메모리(프로그램)
   // 표준 출력 스트림 : 메모리(프로그램) -> 출력버퍼 -> 콘솔(화면장치)
@@ -16,7 +16,7 @@ public class C12StandartIOTest {
     try {
       
         stdioTest1();
-
+        
     }catch(IOException e){
       System.out.println("예외 : " + e.getMessage());
     }
