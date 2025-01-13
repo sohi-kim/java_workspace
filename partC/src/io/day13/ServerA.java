@@ -37,11 +37,11 @@ public class ServerA {
         OutputStream os = socket.getOutputStream();
         // 문자기반 입출력 스트림
         sc = new Scanner(is);         // 클라이언트가 보낸 데이터 받을 때
-        PrintWriter pw = new PrintWriter(os);    // 클라이언트에게 데이터 보낼 때
+        PrintWriter pw = new PrintWriter(os,true);    // 클라이언트에게 데이터 보낼 때
 
         /////////// 데이터 보내기 
         pw.println("From 서버 : 연결이 성공하였습니다.");   // 클라이언트가 수신
-
+        System.out.println("연결 승인 하였습니다.");
 
 
       } catch (IOException e) {

@@ -31,11 +31,12 @@ public class ClientA {
       PrintWriter pw = new PrintWriter(os);   // 서버에게 데이터를 보낼 때
 
       ////// 데이터 수신 (스레드 사용하지 않으면 송신과 수신 순서를 맞춰서 코드 작성)
+      
       String message = sc.nextLine();
       System.out.println(message);      // 수신 데이터 화면에 출력하기
 
 
-      
+
 
     } catch (IOException e) {
       System.out.println("예외 : " + e.getMessage());
