@@ -1,7 +1,9 @@
 package exam.day13;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 
@@ -26,8 +28,35 @@ public class JavaWordList implements WordList{
     //단어장.txt 에서 데이터를 읽어와서 `words 리스트에 담기`
     //   ㄴ 한 개의 라인을 읽어서 , 로 분리 -> 분리한 문자열을 각각 JavaWord 객체의 필드값으로 저장
     public void fileLoad() {    //이 메소드에서 모든 동작을 실행하도록 작성하세요.
-        String test = "public , 공용의 , 1";
-        String[] temp = test.split(",");  // 3개의 문자열로 분리된 결과가 배열에 저장
+        // String test = "public , 공용의 , 1";
+        // String[] temp = test.split(",");  // 3개의 문자열로 분리된 결과가 배열에 저장
+    String line=null;
+    int count=0;
+    FileReader fr = null;
+    Scanner sc = null;
+    try {
+      fr = new FileReader(this.filePath);  
+      sc = new Scanner(fr);  
+      while(sc.hasNext()){      // 읽어올 다음 줄이 있느냐? 참이면
+        line = sc.nextLine();    // 다음 줄 읽어오기
+//     line 문자열을 , 로 분해하여 Javaword 객체 만들기
+        String[] temp = line.split(",");
+        JavaWord item = new JavaWord(temp[0].trim(), 
+                                    temp[1].trim(), 
+                                    Integer.parseInt(temp[2].trim()));
+        words.add(item);
+        // System.out.println(line);
+        count++;
+      }
+      // System.out.println(sb.toString());
+      System.out.println("읽은 단어 개수 : " + count);
+    } catch (Exception e) {
+      System.out.println("예외 : " + e.getMessage());
+    } finally {
+      try {
+        fr.close();   sc.close();
+      } catch (Exception e) {    }
+    }  // try catch 끝
         
     }
 
@@ -104,7 +133,7 @@ public class JavaWordList implements WordList{
     @Override
     public void print(){
         for(JavaWord word : words) {
-            System.out.println(String.format("%-20s %-30s %-20s",
+            System.out.println(String.format("%-20s %-30s \t%-14s",
                                     word.getEnglish(),word.getKorean(),word.getLevel()));
         }
     }
