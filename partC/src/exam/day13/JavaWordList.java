@@ -1,6 +1,7 @@
 package exam.day13;
 
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +22,20 @@ public class JavaWordList implements WordList{
     
     //새로운 단어등록, 기존단어 삭제 등의 변경사항을 파일에 저장하기
     public void fileSave(){
-           
+        PrintWriter pw =null;
+        try{
+            pw = new PrintWriter(this.filePath);
+            for (JavaWord w : words) {
+                pw.println(w.getEnglish() + " , " + w.getKorean() + " , " + w.getLevel());
+            }
+
+        }catch(Exception e){
+
+        }finally {
+            try {
+                pw.close();
+            } catch (Exception e) {      }
+        }
     }
 
 
@@ -133,7 +147,7 @@ public class JavaWordList implements WordList{
     @Override
     public void print(){
         for(JavaWord word : words) {
-            System.out.println(String.format("%-20s %-30s \t%-14s",
+            System.out.println(String.format("%-20s %-30s %20s",
                                     word.getEnglish(),word.getKorean(),word.getLevel()));
         }
     }
