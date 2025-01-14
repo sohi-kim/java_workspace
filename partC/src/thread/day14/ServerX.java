@@ -12,7 +12,7 @@ public class ServerX {
     ServerSocket serverSocket = null;
     try {
       serverSocket = new ServerSocket();
-      serverSocket.bind(new InetSocketAddress("localhost",5051));
+      serverSocket.bind(new InetSocketAddress("localhost",5050));
       System.out.println("[서버]연결 요청을 기다리는 중입니다.");
       
       Socket socket = serverSocket.accept();
