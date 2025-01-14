@@ -17,7 +17,7 @@ public class ServerB {
 
 
    public static void main(String[] args) {
-    ServerSocket serverSocket = null;
+      ServerSocket serverSocket = null;
       Socket socket = null;
       Scanner sc = null;
       try {

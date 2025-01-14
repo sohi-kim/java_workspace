@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
@@ -23,7 +22,7 @@ public class ClientB {
       ///// 서버에게 연결 요청////
       /// 연결하려는 서버의 ip, port 를 정확히 설정하여 연결 요청을 보냅니다.
       // socket.connect(new InetSocketAddress("localhost", 5050));
-      socket.connect(new InetSocketAddress("localhost", 5050));
+      socket.connect(new InetSocketAddress("192.168.0.253", 5050));
 
       //////////// 데이터 송수신할 입출력 스트림 객체 생성하기
       InputStream is = socket.getInputStream();
