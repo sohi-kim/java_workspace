@@ -8,6 +8,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class C19OpenAPITest {
 
@@ -44,9 +49,10 @@ public class C19OpenAPITest {
       // close 해야할 입출력 스트림 선언을 try 뒤에 () 안에 합니다.
         try( 
         	//HttpURLConnection 객체를 통해 문자기반 입력 스트림 생성하기
-        	InputStreamReader ir=new InputStreamReader(connection.getInputStream());			
+          // Open API 제공 응답이 utf-8 인코딩된 문자열
+        	InputStreamReader ir=new InputStreamReader(connection.getInputStream(),StandardCharsets.UTF_8);			
        		//문자기반 파일 출력스트림
-        	PrintWriter pw =new PrintWriter(new File(filename));		//자동 flush 기능이 있는 메소드 사용.
+        	PrintWriter pw =new PrintWriter(new File(filename),StandardCharsets.UTF_8);		//자동 flush 기능이 있는 메소드 사용.
         		
         	//문자기반 입출력 보조 스트림
        		BufferedWriter	bw = new BufferedWriter(pw);
@@ -58,17 +64,37 @@ public class C19OpenAPITest {
                 jsonStr+=line;				
             }
             System.out.println("----------- HttpsURLConnection 으로 읽어온 응답 문자열  -------------");
-            System.out.println(jsonStr);	//콘솔 출력
+            // System.out.println(jsonStr);	//콘솔 출력
             bw.write(jsonStr);		//파일 출력
 //          bw.flush();     //버퍼를 사용하는 출력일 때는 필요함.pw가 flush 기능이 있으므로 여기서는 생략가능.
         }catch (IOException e) {
             e.printStackTrace();
         }
-      //  System.out.println(jsonToList(jsonStr).size());
+      // System.out.println(jsonToList(jsonStr).size());
         					//문자열을 자바 리스트로 변환하는 메소드-개발자 정의
+      List<CurrencyRate> list = jsonToList(jsonStr);
+      // 예시 : 유로 화폐 환전을 위해서 살 때 환율 금액을 알아낸 보세요.
+      // 답 : 1유로 = 1510.78 원
+
 
 
 
   }  // main end
+
+  public static List<CurrencyRate> jsonToList(String json){
+    // json 문자열을 객체로 변환 -> gson 라이브러리 사용.
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson/2.10.1 에서 
+    // gson-2.10.1.jar 파일 다운로드 -> Referenced Libraries 항목에 + 버튼 클릭으로 추가
+
+    //{"result":1,"cur_unit":"AED","ttb":"393.71","tts":"401.66","deal_bas_r":"397.69","bkpr":"397","yy_efee_r":"0","ten_dd_efee_r":"0","kftc_bkpr":"397","kftc_deal_bas_r":"397.69","cur_nm":"아랍에미리트 디르함"}
+    //  ㄴ 하나의 객체  : cur_unit , ttb , tts , cur_nm 4개 필드값만 자바 CurrencyRate 객체로 만들기
+
+    Gson gson = new Gson();
+    // 문자열 json 을 List<CurrencyRate> 로 변환
+    List<CurrencyRate> list =
+         gson.fromJson(json, new TypeToken<List<CurrencyRate>>(){}.getType());
+    System.out.println(list);
+    return list;
+  }
 
 }
