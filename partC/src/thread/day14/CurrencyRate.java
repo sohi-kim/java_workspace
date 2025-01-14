@@ -14,6 +14,24 @@ public class CurrencyRate {
     this.cur_nm = cur_nm;
   }
 
+  public String getCur_unit() {
+    return cur_unit;
+  }
+
+  public String getTtb() {
+    return ttb;
+  }
+
+  public String getTts() {
+    return tts;
+  }
+
+  public String getCur_nm() {
+    return cur_nm;
+  }
+
+
+
 
   @Override
   public String toString() {

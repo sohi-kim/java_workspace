@@ -74,9 +74,16 @@ public class C19OpenAPITest {
         					//문자열을 자바 리스트로 변환하는 메소드-개발자 정의
       List<CurrencyRate> list = jsonToList(jsonStr);
       // 예시 : 유로 화폐 환전을 위해서 살 때 환율 금액을 알아낸 보세요.
-      // 답 : 1유로 = 1510.78 원
-
-
+      // 답 : 1유로 = 1480.87 원
+      double won=0;
+      for(CurrencyRate cur : list){
+        if(cur.getCur_unit().equals("EUR")) {
+            String temp = cur.getTtb();   // ttb 가져오기
+            won = Double.parseDouble(temp.replace(",", ""));
+            break;
+        }
+      }
+      System.out.println("살 때 환율 금액 : " + won + " 원");
 
 
   }  // main end
