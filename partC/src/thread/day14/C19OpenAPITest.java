@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -64,7 +65,7 @@ public class C19OpenAPITest {
                 jsonStr+=line;				
             }
             System.out.println("----------- HttpsURLConnection 으로 읽어온 응답 문자열  -------------");
-            // System.out.println(jsonStr);	//콘솔 출력
+            System.out.println(jsonStr);	//콘솔 출력
             bw.write(jsonStr);		//파일 출력
 //          bw.flush();     //버퍼를 사용하는 출력일 때는 필요함.pw가 flush 기능이 있으므로 여기서는 생략가능.
         }catch (IOException e) {
@@ -86,6 +87,8 @@ public class C19OpenAPITest {
       System.out.println("살 때 환율 금액 : " + won + " 원");
 
 
+    
+
   }  // main end
 
   public static List<CurrencyRate> jsonToList(String json){
@@ -104,4 +107,13 @@ public class C19OpenAPITest {
     return list;
   }
 
+
+  public void test(String jsonStr) {
+    String[] temp = jsonStr.split("},{");
+    for(String t : temp){
+      System.out.println(t);
+    }
+
+
+  }
 }
