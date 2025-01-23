@@ -25,9 +25,11 @@ public class CustomerMenu1 {
       pstmt.setString(1, email);
       pstmt.setString(2, customid);
 
+      // 리턴값은 insert, update, delete sql 실행이 반영된 행의 갯수
+      //
       int result =pstmt.executeUpdate();
       System.out.println("result : " + result);
-      
+
       if(result ==1 )
         System.out.println("고객님 정보를 업데이트 완료했습니다.");
       else
