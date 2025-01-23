@@ -15,6 +15,11 @@ public class PreparedStatementTest {
     try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
       // sql 실행에 필요한 값은 파라미터로 전달. ? 는 파라미터(매개변수) 기호입니다.
+      // ? 의 순서와 타입을 지정. 타입은 setXXXX 메소드로 정합니다.
+      pstmt.setString(1, "nayeon");
+      pstmt.setString(2, "최나연");
+      pstmt.setString(3,"nay@gamil.com");
+      pstmt.setInt(4, 24);
 
 
       pstmt.executeUpdate();   // sql 실행
