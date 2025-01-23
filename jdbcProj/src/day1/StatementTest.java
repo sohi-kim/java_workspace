@@ -14,12 +14,13 @@ public class StatementTest {
     System.out.println("연결 확인 : " + connection);
     //2. sql 실행
     String sql="INSERT INTO TBL_CUSTOMER(custom_id, name, email, age, reg_date) " + 
-            "VALUES ('hongGS', '홍길순', 'gilsoon@korea.com', 29, sysdate)";
+            "VALUES ('hongGS2', '홍길순', 'gilsoon2@korea.com', 29, sysdate)";
     try (Statement stmt = connection.createStatement()) {
       // createStatement() : Statement 타입의 객체를 생성
       System.out.println("Statement 구현 클래스는 ?" + stmt.getClass().getName());
 
-      stmt.executeQuery(sql);    // sql 쿼리 실행. 컴파일한 sql 을 오라클이 실행합니다.
+      stmt.execute(sql);    // sql 쿼리 실행. 컴파일한 sql 을 오라클이 실행합니다.
+                                 // sql 을 인자로 받는 execute 메소드 사용도 가능합니다.
     } catch (Exception e) {
       System.out.println("SQL 실행 예외 : " + e.getMessage());
     }
