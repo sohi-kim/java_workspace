@@ -18,10 +18,11 @@ public class C20OpenAPITest {
       String authkey="AluENEwBXPhUPGfCO8dy3cfaqFJD8yb9";
       String searchdate="20250113";
       HttpURLConnection connection=null;
+      
       // 가변객체 문자열을 저장하기
       StringBuilder url = 
       new StringBuilder("https://www.koreaexim.go.kr/site/program/financial/exchangeJSON");
-
+      
       try{
         // 요청 URL 문자열
         url.append("?authkey=").append(authkey)
@@ -33,7 +34,7 @@ public class C20OpenAPITest {
       }catch(IOException e){
           System.out.println("API 요청 예외 :" + e.getMessage());
       }
-
+      
       String line=null;
       String jsonStr="";
       try( 

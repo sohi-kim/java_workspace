@@ -1,8 +1,13 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\Class01\\Downloads\\gson-2.10.1.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Class241129\\외부라이브러리\\gson-2.10.1.jar"
+        ],
+        "exclude": [
+            "c:\\Users\\Class01\\Downloads\\gson-2.10.1.jar"
+        ]
+    }
 }
