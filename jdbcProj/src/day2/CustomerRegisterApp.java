@@ -7,7 +7,25 @@ public class CustomerRegisterApp {
 
   public static void main(String[] args) {
             // remove();
-            modify();
+            // modify();
+      System.out.println("[[[고객 관리 APP]]]");
+      while(true) {
+          System.out.println("선택 메뉴 : 1. 고객 등록  2. 고객정보 조회   3. 고객정보 수정 ");
+          System.out.println("            4. 고객 회원 탈퇴     5.종료");
+          System.out.print("메뉴 선택 >>> ");
+          String menu = System.console().readLine();
+          switch (args) {
+            case value:
+              
+              break;
+            case "5";
+              break;
+            default:
+              break;
+          }
+
+      }
+      System.out.println("프로그램 종료합니다.");  
   }
 
   public static void remove() {
