@@ -1,0 +1,48 @@
+package dao.day2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import vo.day1.Customer;
+
+public class TblCustomerDao {
+
+    // db연결 정보를 상수로 정의합니다.
+    private static final String URL = "jdbc:oracle:thin:@//localhost:1521/xe";
+    private static final String USERNAME ="c##idev";
+    private static final String PASSWORD ="1234";
+
+    // db연결 객체 만드는 메소드를 dao 에서만 사용할 수 있도록 정의
+    private Connection getConnection() throws SQLException {
+      return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
+
+    // sql 실행 메소드 정의 -> 각 sql connection 만들어서 사용하고 sql 실행 후 close()
+    public int insert(){
+      
+      String sql="";
+      try (Connection connection = getConnection();
+           PreparedStatement pstmt = connection.prepareStatement(sql);
+          ) {
+        
+      } catch (Exception e) {
+
+      }
+      return 0;
+    }
+
+    public int update() {
+      return 0;
+    }
+
+    public int delete() {
+      return 0;
+    }
+
+    // 기본키 값으로 조회
+    public Customer selectByPk(){
+      return null;
+    } 
+}
