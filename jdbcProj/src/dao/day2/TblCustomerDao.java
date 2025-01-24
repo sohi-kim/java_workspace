@@ -57,16 +57,19 @@ public class TblCustomerDao {
       return result;
     }
 
-    public int delete() {
-      String sql="";
+    // 기본키 값으로 삭제
+    public int delete(String customId) {
+      int result =0;
+      String sql="DELETE FROM tbl_customer WHERE custom_id = ?";
       try (Connection connection = getConnection();
            PreparedStatement pstmt = connection.prepareStatement(sql);
           ) {
-        
+            pstmt.setString(1, customId);
+            result = pstmt.executeUpdate();
       } catch (Exception e) {
         System.out.println("예외 : " + e.getMessage());
       }
-      return 0;
+      return result;
     }
 
     // 기본키 값으로 조회

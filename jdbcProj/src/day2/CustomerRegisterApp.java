@@ -7,11 +7,26 @@ public class CustomerRegisterApp {
 
   public static void main(String[] args) {
     
-          modify();
+        remove();
 
 
   }
 
+  public static void remove() {
+    System.out.println("===== 회원(고객) 탈퇴 메뉴 입니다. ======");
+    System.out.print(" 아이디 입력 >>> ");
+    String customid = System.console().readLine();  
+    
+    TblCustomerDao customerDao = new TblCustomerDao();
+    int result = customerDao.delete(customid);
+
+    if(result ==0){
+      System.out.println("회원 탈퇴 실패!!");
+    }else {
+      System.out.println("회원 탈퇴 성공!!");
+    }
+    
+  }
 
   public static void modify() {
     System.out.println("===== 고객 정보 수정 메뉴 입니다. ======");
