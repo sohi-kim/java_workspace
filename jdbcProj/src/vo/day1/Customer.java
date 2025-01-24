@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor   // 모든 프로퍼티값 초기화
+@AllArgsConstructor   // 모든 프로퍼티값 초기화 생성자 코드
 @NoArgsConstructor
 public class Customer {
     private String customId;
