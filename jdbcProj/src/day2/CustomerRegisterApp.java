@@ -7,7 +7,7 @@ public class CustomerRegisterApp {
 
   public static void main(String[] args) {
     
-    modify();
+          modify();
 
 
   }
@@ -23,8 +23,16 @@ public class CustomerRegisterApp {
     String postcode = System.console().readLine();
 
     // dao 클래스 메소드 사용하기
-  }
+    Customer customer = new Customer(customid, null, email, 0, null,postcode);
+    TblCustomerDao customerDao = new TblCustomerDao();
+    int result = customerDao.update(customer);
 
+    if(result==0){
+      System.out.println("고객 정보 변경 실패!!");
+    } else {
+      System.out.println("고객 정보 변경 성공!!");
+    }
+  }
 
   public static void register(){
     System.out.println("===== 고객 등록 (회원 가입) 메뉴 입니다. ======");

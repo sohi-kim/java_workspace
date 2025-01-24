@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+// import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -32,9 +32,6 @@ public class Customer {
         this.age = age;
         this.regDate = regDate;
     }
-
-    
-
 }
 
 // ORM 프레임웍을 사용하면 기본생성자, setter 가 필요합니다.
