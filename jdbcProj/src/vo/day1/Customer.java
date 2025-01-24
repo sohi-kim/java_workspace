@@ -5,6 +5,7 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -13,6 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor   // 모든 프로퍼티값 초기화 생성자 코드
+// @RequiredArgsConstructor     // final 변수만 초기화 커스텀 생성자
 @NoArgsConstructor
 public class Customer {
     private String customId;
@@ -20,6 +22,18 @@ public class Customer {
     private String email;
     private int age;
     private Date regDate;
+    private String postcode;
+
+    // 일부 프로퍼티 변수 초기화 생성자
+    public Customer(String customId, String name, String email, int age, Date regDate) {
+        this.customId = customId;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.regDate = regDate;
+    }
+
+    
 
 }
 
