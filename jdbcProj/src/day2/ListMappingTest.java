@@ -47,8 +47,15 @@ public class ListMappingTest {
               list.add(customer);       // 리스트 자료구조에 위에서 만든 객체 저장
         }
 
-        System.out.println("조회 결과 : " + list);        
-        
+        // System.out.println("조회 결과 : " + list);   
+        // 브라우저 출력은 행, 컬럼 각각 출력
+        System.out.println("=== "+year + " 년도에 가입한 회원 ===");
+        for(Customer cus : list){
+
+          System.out.println(cus.getCustomId() + "\t" + cus.getName() + "\t" +
+                cus.getEmail() + "\t" + cus.getAge() + "\t" + cus.getRegDate());
+        }     
+
       } catch (Exception e) {
         System.out.println("검색 SELECT 실행 예외 : " + e.getMessage());
       }
