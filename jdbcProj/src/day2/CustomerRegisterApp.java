@@ -6,10 +6,8 @@ import vo.day1.Customer;
 public class CustomerRegisterApp {
 
   public static void main(String[] args) {
-    
-        remove();
-
-
+            // remove();
+            modify();
   }
 
   public static void remove() {
@@ -26,26 +24,37 @@ public class CustomerRegisterApp {
       System.out.println("회원 탈퇴 성공!!");
     }
     
+
+
   }
 
   public static void modify() {
+    TblCustomerDao customerDao = new TblCustomerDao();
     System.out.println("===== 고객 정보 수정 메뉴 입니다. ======");
     System.out.print(" 아이디 입력 >>> ");
-    String customid = System.console().readLine();     
+    String customid = System.console().readLine();   
+    
+    System.out.println("~~ 고객님 현재 정보 ~~");
+    Customer customer = customerDao.selectByPk(customid);
+    System.out.println(customer);
+    
+    System.out.println("~~ 이메일,우편번호 수정해 주세요. ~~");
     System.out.print(" 이메일 입력 >>> ");
     String email = System.console().readLine();
     System.out.print(" 우편번호 입력 >>> ");
     String postcode = System.console().readLine();
 
     // dao 클래스 메소드 사용하기
-    Customer customer = new Customer(customid, null, email, 0, null,postcode);
-    TblCustomerDao customerDao = new TblCustomerDao();
+    customer = new Customer(customid, null, email, 0, null,postcode);
+   
     int result = customerDao.update(customer);
 
     if(result==0){
       System.out.println("고객 정보 변경 실패!!");
     } else {
       System.out.println("고객 정보 변경 성공!!");
+      customer = customerDao.selectByPk(customid);
+      System.out.println(customer);
     }
   }
 
