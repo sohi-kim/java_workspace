@@ -96,10 +96,12 @@ public class CartMenu {
   // 장바구니의 추가/삭제/목록 은 dao 상관없이 List 조작입니다.
   public void showCartList(){
     System.out.println("----- 장바구니 목록 -----");
-    //상품코드, 수량
-    for(BuyVo temp : list){
-      System.out.println(temp.getPcode() + "\t" + temp.getQuantity());
+    // 상품코드, 수량
+    for(int i =0;i<list.size();i++){
+      BuyVo temp = list.get(i);
+      System.out.println(i + "\t" + temp.getPcode() + "\t" + temp.getQuantity());
     }
+    // 장바구니 상품들 총 결제금액을 구할 예정
   }
 
   public void addCartItem(){
