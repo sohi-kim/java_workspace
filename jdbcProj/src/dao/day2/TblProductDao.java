@@ -90,13 +90,13 @@ public class TblProductDao {
     }
 
     // 기본키 값으로 조회
-    public Product selectByPk(String pname){
-        String sql = "SELECT * FROM TBL_PRODUCT WHERE pname = ?";
+    public Product selectByPk(String pcode){
+        String sql = "SELECT * FROM TBL_PRODUCT WHERE pcode = ?";
         Product product = null;
         try (Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ) {
-                pstmt.setString(1, pname);
+                pstmt.setString(1, pcode);
                 ResultSet rs = pstmt.executeQuery();
                 if(rs.next()){
                     product = new Product(rs.getString(1),
