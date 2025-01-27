@@ -95,12 +95,11 @@ public class CartMenu {
     int count = dao.insertMany(list);
     if (count > 0) {
       System.out.println("상품 구매가 완료 되었습니다.");
+      list.clear();     // 장바구니 비우기
     } else {
       System.out.println("상품 구매가 비정상적으로 종료되었습니다.");
     }
-
   }
-
 
   // 장바구니의 추가/삭제/목록 은 dao 상관없이 List 조작입니다.
   public void showCartList(){

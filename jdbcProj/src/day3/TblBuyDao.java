@@ -47,6 +47,7 @@ public class TblBuyDao {
       // System.out.println("예외 : " + e.getMessage());
            try {
             connection.rollback();
+            count=0;
           } catch (SQLException e1) {   }
     } finally {
           try {
