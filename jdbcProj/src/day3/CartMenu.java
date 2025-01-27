@@ -20,28 +20,29 @@ public class CartMenu {
   public static void main(String[] args) {
     CartMenu cart = new CartMenu();
     cart.start();
-
+    // switch 완성해서 장바구니 테스트 해보세요.
   }
 
-  private void start() {
+  public void start() {
     System.out.println("[[[[ 우리 쇼핑몰 ]]]]");
     System.out.print("사용자 아이디 입력하세요. >>> ");
-    this.customerId = System.console().readLine();
+    customerId = System.console().readLine();
+    
     //   아이디 존재 여부 확인 필요. 아이디 존재할때만 아래 실행하기
     showMenu();
     boolean run=true;
-    System.out.print("메뉴 선택 하세요. >>> ");
-    String menu = System.console().readLine();
     while(run){
+      System.out.print("메뉴 선택 하세요. >>> ");
+      String menu = System.console().readLine();
       switch (menu) {
         case "A","a":
-          
+          addCartItem();
           break;
         case "L","l":
-          
+          showCartList();
           break;
         case "R","r":
-          
+          removeCartItem();
           break;
         case "B","b":
           
@@ -73,6 +74,7 @@ public class CartMenu {
     int quantity = Integer.parseInt(System.console().readLine());
 
     BuyVo vo = new BuyVo();
+    vo.setCustom_id(this.customerId);
     vo.setPcode(pcode); vo.setQuantity(quantity); 
 
     if(dao.insertOne(vo)==1){
@@ -116,9 +118,9 @@ public class CartMenu {
       vo.setPcode(pcode); vo.setQuantity(quantity); 
       list.add(vo);
 
-      System.out.print("계속 구매하시려면 엔터를 누르세요.종료는 N 입니다.");
-      if(System.console().readLine().toUpperCase().equals("N")) run=false;
-
+      System.out.print("계속 구매하시려면 엔터를 누르세요.종료는 N 입니다. ");
+      if(System.console().readLine().toUpperCase().equals("N")) 
+              run=false;
     }
   }  //메소드 끝
 
