@@ -20,6 +20,9 @@ public class CartMenu {
   // 로그인한 사용자
   private String customerId;
 
+  // 상품 가격표 
+  private Map<String,Integer> priceTables;
+
   // 편의상 메인을 같은 클래스 작성하고 실행합니다.
   public static void main(String[] args) {
     CartMenu cart = new CartMenu();
@@ -34,7 +37,7 @@ public class CartMenu {
     // 1. 아이디 존재 여부 확인 필요. 아이디 존재할때만 아래 실행하기-> 각자 해보세요
 
     // 상품 가격표 보여주기
-    Map<String,Integer> priceTables = productDao.getPriceTable();
+    this.priceTables = productDao.getPriceTable();
     System.out.println("쇼핑몰 상품 가격표 : " + priceTables);
     // 메뉴 보여주기
     showMenu();
@@ -116,13 +119,17 @@ public class CartMenu {
 
   // 장바구니의 추가/삭제/목록 은 dao 상관없이 List 조작입니다.
   public void showCartList(){
+    int totalPrice=0;    // 결제금액 초기화
     System.out.println("----- 장바구니 목록 -----");
     // 상품코드, 수량
     for(int i =0;i<list.size();i++){
       BuyVo temp = list.get(i);
       System.out.println(i + "\t" + temp.getPcode() + "\t" + temp.getQuantity());
+      totalPrice += (temp.getQuantity()*priceTables.get(temp.getPcode()));    
+                   // 
     }
     // 장바구니 상품들 총 결제금액을 구할 예정
+    System.out.println("총 결제 금액 : " + totalPrice);
   }
 
   public void addCartItem(){

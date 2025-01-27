@@ -158,6 +158,8 @@ public class TblProductDao {
         return map;
     }
 
+    // Map에 저장된 데이터는 selectByPk(String pcode) 메소드를 대신할 수 있습니다.
+    // Map 연습 메소드 - CartMenu 에서 활용은 보류
     public Map<String,Product> selectAll(){
       Map<String,Product> map = new HashMap<>();
       String sql = "SELECT * FROM tbl_product";    // 모든행, 모든컬럼 조회
