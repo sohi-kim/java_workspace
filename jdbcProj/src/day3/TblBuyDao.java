@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TblBuyDao {
 
@@ -14,6 +15,34 @@ public class TblBuyDao {
 
   private Connection getConnection() throws SQLException{
        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+  }
+
+  public int insertMany(List<BuyVo> cart){  // 장바구니 목록을 인자로 받기
+    int count = 0;
+    String sql = "INSERT INTO tbl_buy VALUES(tbl_buy_seq.nextval, ?, ?, ?, sysdate)";
+    try (
+            Connection connection= getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+       ) {
+        // 수동 커밋으로 변경
+        connection.setAutoCommit(false);
+
+        // batch(일괄) 실행 
+        for(BuyVo vo : cart){   // 장바구니 목록의 항목 갯수 만큼 반복
+           pstmt.setString(1, vo.getCustom_id());
+           pstmt.setString(2, vo.getPcode());
+           pstmt.setInt(3, vo.getQuantity());
+           pstmt.addBatch();    //  * 일괄처리할 파라미터 값을 추가. 모아두었다가 한번에 처리
+           count++;
+        }
+           pstmt.executeBatch();    //* 모아둔 파라미터 값 목록으로 일괄 실행
+          //  result = pstmt.executeUpdate();
+          connection.commit();      // 데이터베이스에 영구 저장
+          
+    } catch (SQLException e) {
+      System.out.println("예외 : " + e.getMessage());
+    }
+    return count;
   }
 
   public int insertOne(BuyVo vo){

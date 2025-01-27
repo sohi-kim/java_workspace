@@ -45,8 +45,11 @@ public class CartMenu {
           removeCartItem();
           break;
         case "B","b":
-          
+          buyOneItem();
           break;
+        case "Y","y":
+          buyCartItems();
+          break;  
         case "X","x":
           run=false;
           break;
@@ -89,8 +92,6 @@ public class CartMenu {
   public void buyCartItems() {
   
   }
-
-
 
 
   // 장바구니의 추가/삭제/목록 은 dao 상관없이 List 조작입니다.
