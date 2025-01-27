@@ -73,13 +73,13 @@ public class TblProductDao {
     }
 
     // 기본키 값으로 삭제
-    public int delete(String pname){
+    public int delete(String pcode){
         int result=0;
-        String sql = "DELETE FROM tbl_product WHERE pname = ?";
+        String sql = "DELETE FROM tbl_product WHERE pcode = ?";
         try (Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ) {
-                pstmt.setString(1, pname);
+                pstmt.setString(1, pcode);
 
                 result = pstmt.executeUpdate();
             
@@ -112,13 +112,13 @@ public class TblProductDao {
     }
 
     // 상품 키워드로 조회
-    public List<Product> searchByKeyword(String pname){
+    public List<Product> searchByKeyword(String keyword){
         String sql = "SELECT * FROM TBL_PRODUCT LIKE '%' || ? || '%' ";
         List<Product> list = new ArrayList<>();
         try (Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ) {
-                pstmt.setString(1, pname);
+                pstmt.setString(1, keyword);
 
                 ResultSet rs = pstmt.executeQuery();
                 Product product = null;
