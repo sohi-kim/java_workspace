@@ -21,11 +21,10 @@ public class TblBuyDao {
     int count = 0;
     String sql = "INSERT INTO tbl_buy VALUES(tbl_buy_seq.nextval, ?, ?, ?, sysdate)";
     Connection connection=null;
-    try 
-            
-       {
+    PreparedStatement pstmt=null;
+    try {
         connection= getConnection();
-        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt = connection.prepareStatement(sql);
        
         // 수동 커밋으로 변경
         connection.setAutoCommit(false);
@@ -48,6 +47,11 @@ public class TblBuyDao {
       // System.out.println("예외 : " + e.getMessage());
            try {
             connection.rollback();
+          } catch (SQLException e1) {   }
+    } finally {
+          try {
+            pstmt.close();
+            connection.close();
           } catch (SQLException e1) {   }
     }
     return count;
