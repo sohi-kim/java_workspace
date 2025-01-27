@@ -49,6 +49,7 @@ public class CartMenu {
           break;
         case "Y","y":
           buyCartItems();
+          
           break;  
         case "X","x":
           run=false;
@@ -90,7 +91,14 @@ public class CartMenu {
 
   // 장바구니 목록으로 구매하기 - n개 행 insert (트랜잭션)
   public void buyCartItems() {
-  
+    System.out.println("----- 장바구니 상품 모두 구매 -----");
+    int count = dao.insertMany(list);
+    if (count > 0) {
+      System.out.println("상품 구매가 완료 되었습니다.");
+    } else {
+      System.out.println("상품 구매가 비정상적으로 종료되었습니다.");
+    }
+
   }
 
 
@@ -118,7 +126,7 @@ public class CartMenu {
       int quantity = Integer.parseInt(System.console().readLine());
 
       BuyVo vo = new BuyVo();
-      vo.setPcode(pcode); vo.setQuantity(quantity); 
+      vo.setPcode(pcode); vo.setQuantity(quantity); vo.setCustom_id(this.customerId);
       list.add(vo);
 
       System.out.print("계속 구매하시려면 엔터를 누르세요.종료는 N 입니다. ");

@@ -20,10 +20,13 @@ public class TblBuyDao {
   public int insertMany(List<BuyVo> cart){  // 장바구니 목록을 인자로 받기
     int count = 0;
     String sql = "INSERT INTO tbl_buy VALUES(tbl_buy_seq.nextval, ?, ?, ?, sysdate)";
-    try (
-            Connection connection= getConnection();
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-       ) {
+    Connection connection=null;
+    try 
+            
+       {
+        connection= getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+       
         // 수동 커밋으로 변경
         connection.setAutoCommit(false);
 
@@ -36,11 +39,16 @@ public class TblBuyDao {
            count++;
         }
            pstmt.executeBatch();    //* 모아둔 파라미터 값 목록으로 일괄 실행
-          //  result = pstmt.executeUpdate();
+           // 저장할 행 데이터는 n개, 오라클서버에 처리 요청은 한번만한다.
+          
+           //  result = pstmt.executeUpdate();  // 이 명령어 반복은 요청을 n번
           connection.commit();      // 데이터베이스에 영구 저장
           
     } catch (SQLException e) {
-      System.out.println("예외 : " + e.getMessage());
+      // System.out.println("예외 : " + e.getMessage());
+           try {
+            connection.rollback();
+          } catch (SQLException e1) {   }
     }
     return count;
   }
