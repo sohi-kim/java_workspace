@@ -1,0 +1,38 @@
+DAO 클래스 
+  ㄴ Data Access Object
+  ㄴ SQL 실행을 위한 메소드로만 구성이 되는 클래스 정의
+  ㄴ 일반적으로 고객,상품,구매 테이블에 해당하는 클래스를 각각 정의	
+  ㄴ Connection 객체 만드는 코드도 포함.
+
+SQL명령어	  매개변수 입력값	       		결과값
+
+insert		컬럼데이터들..... VO클래스		int
+update		컬럼데이터들..... VO클래스		int
+delete		1개 컬럼값이 대부분.(특정 기능제외)    int
+
+select		조회 값들....(n개)			컬럼데이터들..... VO클래스
+							 (Value Object)
+
+-- // 예제를 위해 우편번호 추가
+insert into tbl_postcode values ('08301', '서울특별시 구로구 가마산로25길 9-24 (구로동, 구로구의회)');
+insert into tbl_postcode values ('08299', '서울특별시 구로구 구로중앙로28길 66 (구로동, 구로5동 주민센터, 구로구보건소)');
+insert into tbl_postcode values ('08286', '서울특별시 구로구 벚꽃로72길 32 (구로동, 서울아트빌)');
+insert into tbl_postcode values ('08268', '서울특별시 구로구 경인로19길 39 (오류동, 서울오류초등학교)');
+
+
+-- // TblProductDao : 상품 테이블을 위한 dao 클래스 만들기
+       메소드는 insert, update (상품명,가격) , delete, selectByPk , searchByKeyword
+       ==> 오늘의 숙제
+	
+
+
+
+
+
+
+
+
+
+
+
+
