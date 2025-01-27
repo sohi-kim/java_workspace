@@ -2,6 +2,9 @@ package day3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import dao.day2.TblProductDao;
 
 // 구매 테이블의 데이터를 조작하는 예제
 // 장바구니 구현 예제
@@ -12,6 +15,7 @@ public class CartMenu {
   private List<BuyVo> list = new ArrayList<>();
   // Dao -> 싱글톤 패턴 수정 예정
   private TblBuyDao dao = new TblBuyDao();
+  private TblProductDao productDao = TblProductDao.getInstance();
 
   // 로그인한 사용자
   private String customerId;
@@ -27,8 +31,12 @@ public class CartMenu {
     System.out.println("[[[[ 우리 쇼핑몰 ]]]]");
     System.out.print("사용자 아이디 입력하세요. >>> ");
     customerId = System.console().readLine();
-    
-    //   아이디 존재 여부 확인 필요. 아이디 존재할때만 아래 실행하기
+    // 1. 아이디 존재 여부 확인 필요. 아이디 존재할때만 아래 실행하기-> 각자 해보세요
+
+    // 상품 가격표 보여주기
+    Map<String,Integer> priceTables = productDao.getPriceTable();
+    System.out.println("쇼핑몰 상품 가격표 : " + priceTables);
+    // 메뉴 보여주기
     showMenu();
     boolean run=true;
     while(run){
@@ -92,12 +100,17 @@ public class CartMenu {
   // 장바구니 목록으로 구매하기 - n개 행 insert (트랜잭션)
   public void buyCartItems() {
     System.out.println("----- 장바구니 상품 모두 구매 -----");
-    int count = dao.insertMany(list);
-    if (count > 0) {
-      System.out.println("상품 구매가 완료 되었습니다.");
-      list.clear();     // 장바구니 비우기
+    //3. 장바구니에 상품이 있을 때만 실행하기
+    if(list.size()>0) {
+      int count = dao.insertMany(list);
+      if (count > 0) {
+        System.out.println("상품 구매가 완료 되었습니다.");
+        list.clear();     // 장바구니 비우기
+      } else {
+        System.out.println("상품 구매가 비정상적으로 종료되었습니다.");
+      }
     } else {
-      System.out.println("상품 구매가 비정상적으로 종료되었습니다.");
+      System.out.println("장바구니가 비었습니다.");
     }
   }
 
@@ -125,7 +138,8 @@ public class CartMenu {
       int quantity = Integer.parseInt(System.console().readLine());
 
       BuyVo vo = new BuyVo();
-      vo.setPcode(pcode); vo.setQuantity(quantity); vo.setCustom_id(this.customerId);
+      vo.setPcode(pcode); vo.setQuantity(quantity); 
+      vo.setCustom_id(this.customerId);
       list.add(vo);
 
       System.out.print("계속 구매하시려면 엔터를 누르세요.종료는 N 입니다. ");
@@ -137,10 +151,15 @@ public class CartMenu {
   public void removeCartItem() {
     System.out.println("----- 장바구니 상품 삭제 -----");
     System.out.print("    삭제할 상품 번호(인덱스) >>> ");
+    
     int index = Integer.parseInt(System.console().readLine());
-
-    //List 저장 목록의 항목 삭제
-    list.remove(index);
+    //2. 인덱스값 범위 검사하기
+    if(index >=0 && index < list.size()) {
+      //List 저장 목록의 항목 삭제
+      list.remove(index);
+    }else {
+      System.out.println("잘못된 인덱스 값입니다.");
+    }
     
   }
 

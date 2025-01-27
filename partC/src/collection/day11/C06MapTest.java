@@ -29,9 +29,14 @@ public class C06MapTest {
       System.out.println(map);
       System.out.println(map.keySet());    // key 값으로 Set 을 만들어 리턴.
 
+      System.out.println("키값 t1의 value는?");
+      System.out.println(map.get("t1"));
+      System.out.println("키값 t3의 value는?");
+      System.out.println(map.get("t3"));
+
       System.out.println(" map 에 저장된 데이터 하나씩 가져오기");
       for(String t : map.keySet()) {
-        // String t 는 key 집합에서 하나씩 가져오기
+        // String t 는 key 집합(map.keyset()의 결과)에서 하나씩 가져오기
 
         // 데이터 value 는 오직 key를 이용해서 가져올 수 있습니다. : get(키) 메소드
         System.out.println("key = " + t + ", value=" + map.get(t));
