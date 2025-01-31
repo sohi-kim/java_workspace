@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import day3.BuyVo;
 import vo.day1.Product;
 
 public class TblProductDao {
@@ -80,7 +79,6 @@ public class TblProductDao {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ) {
                 pstmt.setString(1, pcode);
-
                 result = pstmt.executeUpdate();
             
         } catch (Exception e) {
@@ -89,7 +87,7 @@ public class TblProductDao {
         return result;
     }
 
-    // 기본키 값으로 조회
+    // 기본키 값으로 조회 - 0 또는 1개 행이 결과값
     public Product selectByPk(String pcode){
         String sql = "SELECT * FROM TBL_PRODUCT WHERE pcode = ?";
         Product product = null;
@@ -104,14 +102,44 @@ public class TblProductDao {
                                           rs.getString(3),
                                           rs.getInt(4));
                 }
-            
         } catch (Exception e) {
             System.out.println("예외 : " + e.getMessage());
         }
-        return product;
+        return product;    // 조회 결과(행)가 없으면 product는  null 
     }
 
-    // 상품 키워드로 조회
+    // 카테고리 값으로 상품 조회 - n개 행이 결과값
+    public List<Product> selectByCategory(String category){
+        List<Product> list = null;
+        String sql = "SELECT * FROM tbl_product WHERE category = ?";
+        try (
+            Connection connection = getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+        ){
+            list = new ArrayList<>();
+            pstmt.setString(1,category);
+            ResultSet rs = pstmt.executeQuery();
+            Product product = null;
+            while (rs.next()) {
+                product = new Product(rs.getString(1),
+                                      rs.getString(2),
+                                      rs.getString(3),
+                                      rs.getInt(4));
+                list.add(product);
+            }
+
+
+        }catch (SQLException e) {
+            System.out.println("예외 : " + e.getMessage());
+        }
+
+        return list;   // 조회 결과(행)가 없으면 list가 null 은 아니고 size가 0
+    }
+
+
+
+
+    // 상품 키워드로 조회 - n개 행이 결과값
     public List<Product> searchByKeyword(String keyword){
         String sql = "SELECT * FROM TBL_PRODUCT LIKE '%' || ? || '%' ";
         List<Product> list = new ArrayList<>();
@@ -133,12 +161,12 @@ public class TblProductDao {
         } catch (Exception e) {
             System.out.println("예외 : " + e.getMessage());
         }
-        return list; 
+        return list;     // 조회 결과(행)가 없으면 list가 null 은 아니고 size가 0
     }
 
     // 상품 가격 정보를 Map 에 저장하기 - map 연습 예제
     //  ㄴ Map 에 저장한 데이터는 검색 성능이 좋습니다.
-    // 상품 가격표
+    // 상품 가격표 - n개 행이 조회
     public Map<String, Integer> getPriceTable() {
         Map<String, Integer> map = new HashMap<>();
         String sql = "select pcode,price from tbl_product";
