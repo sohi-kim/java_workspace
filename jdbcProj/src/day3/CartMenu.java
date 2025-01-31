@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import dao.day2.TblProductDao;
+import vo.day1.Product;
 
 // 구매 테이블의 데이터를 조작하는 예제
 // 장바구니 구현 예제
@@ -46,6 +47,11 @@ public class CartMenu {
       System.out.print("메뉴 선택 하세요. >>> ");
       String menu = System.console().readLine();
       switch (menu) {
+        case "C","c":
+          showProductByCategory();
+          break;
+        case "P","p":
+          showProductByKeyword();
         case "A","a":
           addCartItem();
           break;
@@ -71,6 +77,24 @@ public class CartMenu {
     }
   }
   
+  public void showProductByCategory(){
+    System.out.println("카테고리 : A1-과일 A2-수입과일  B1-인스턴트 식품  B2-선물세트 C1-과자류");
+    System.out.print("카테고리 입력 >>> ");
+    String category = System.console().readLine().toUpperCase();
+    List<Product> list = productDao.selectByCategory(category);
+    // 조회 결과 for 문으로 출력하기 (상품명, 상품코드, 가격)
+    for(Product p : list) {
+      System.out.println(String.format("%-20s  %-15s  %,6d ",p.getPname(),p.getPcode(),p.getPrice()));
+    }
+
+  }
+
+  public void showProductByKeyword(){
+      System.out.print("상품명 키워드 입력 >>> ");
+      String pname = System.console().readLine();
+      
+  }
+
   public void showMenu(){
     System.out.println(".".repeat(70));
     System.out.println("[C] 카테고리별 상품 조회    [P] 상품명 키워드 검색  [M]나의 구매내역");
