@@ -1,0 +1,42 @@
+create table	(DDL)
+create sequence    (DDL)
+drop		(DDL)
+insert into 	(DML)
+update~ set	(DML)
+delete from ~ where   (DML)
+truncate table (조건없이 전체 행 삭제. DDL)
+
+-- 단순 조회
+select  컬럼목록 		(DML)
+from 테이블
+where 검색조건
+order by 정렬컬럼 
+
+-- 집계함수를 이용한 통계
+select  컬럼목록 		(DML)
+from 테이블
+where 검색조건(필요시)
+group by 그룹화 컬럼
+having 그룹화 후 조건(필요시)
+order by 정렬컬럼 
+
+-- 조인을 이용한 조회 :  2개 테이블 이상에서 컬럼 조회해야하는 경우
+--   ㄴ 테이블의 컬럼 합치기
+
+select 컬럼목록
+from 테이블1 t1      *주의 : 테이블 별칭에는 as 안씁니다.
+join 테이블2 t2 			
+on t1.공통컬럼 = t2.공통컬럼
+where (또는 and) 검색조건;
+
+* 참고 : join ~ on 부분 반복하면서 테이블 조인 추가할 수 있습니다.
+
+
+
+
+
+
+
+
+
+

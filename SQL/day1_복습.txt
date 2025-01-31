@@ -1,0 +1,30 @@
+오라클 : DBMS(데이터베이스 관리 시스템)
+           데이베이스 서버 구축 프로그램. (실시간,공유,..)
+
+디비버 : 서버에 접속하고 서버의 db 를 사용하는 프로그램
+           클라이언트용 프로그램.(여러 종류와 여러 개의 dbms 접속)
+           sql plus(CLI) 와 sql developer(GUI) 는 오라클 전용.
+
+오라클 서버 : sys와 system 계정이 최고 권한(root) 을 갖습니다.
+                 개발자 또는 운영 담당자는 별도의 계정을 만들어서
+                 해당 계정으로만 서버에 접속합니다.
+                 (1)계정 생성은 권한이 있는 사용자만 할 수 있습니다. 현재 상태는 system
+	    (2) 계정 생성 명령 : create user c##idev ~~~ (생략)
+                 (3) 권한 설정 명령 : grant connect, resource to c##idev;
+
+SQL  : 구조화된 질의(조회) 언어. 관계형 데이터베이스 dbms 는
+         거의 명령어가 똑같다. 데이터를 다룬다.
+        (1) DDL    : create table  (데이터 저장을 위한 테이블 생성)
+        (2) DML   : insert , update, delete, select    (데이터와 관련 명령)
+        (3) DCL    : grant
+
+
+
+
+
+
+
+
+
+
+

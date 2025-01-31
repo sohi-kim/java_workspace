@@ -1,0 +1,31 @@
+
+1. DBMS 설치 
+oracle 18 XE 
+https://www.oracle.com/database/technologies/xe18c-downloads.html
+(주의) 암호설정 : 오라클의 최고 권한(root) 계정 sys, system 
+        	          편의상 1234 로 합니다.
+
+설치 확인 : 윈도우의 서비스 실행(taskmgr)해서 오라클 항목 실행 중인지 확인
+
+2. 기본 클라이언트 프로그램 Sql Plus  (CLI) 실행
+   ㄴ 사용자 계정 만들기 (pdf 2페이지 참고)
+
+3. sql plus 에서 테이블 생성 테스트
+
+1) 접속 계정의 테이블 목록 확인 : tab 테이블은 오라클에서 관리용으로 미리 만들어진 것.
+select * from tab;    => 처음에는 테이블이 없음.
+
+2) 테스트 테이블 만들기
+create table ~
+
+3) select * from tab;
+
+4) 2)에서 만들어진 tbltest  테이블에 저장되 데이터 확인
+select * from tbltest ; 
+
+5) 데이터 tbltest  테이블에 추가하기
+insert ~
+
+4. 클라이언트 프로그램 dbeaver 사용
+ 
+

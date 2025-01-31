@@ -1,0 +1,93 @@
+==SQL plus 에서 실행할 명령입니다.==
+
+-- 관리자 권한으로 접속(패스워드 없습니다.)
+sys as sysdba
+
+(참고) 접속 명령어 : connect / as sysdba;   
+
+col object_name format a20   -- 컬럼의 출력 크기 지정
+col object_type format a20
+
+-- **메타데이터** 조회 : 사용자의 테이블 및 오브젝트와 관련된 정보를 
+--		 all_objects 오라클 테이블에 저장
+select object_name,object_type
+from all_objects 
+where owner = 'C##IDEV';
+
+
+-- c##idev 계정이 사용하는 테이블스페이스(물리적공간) 이름 조회
+col owner format a20
+col table_name format a20
+col tablespace_name format a20
+
+select owner , table_name, tablespace_name
+from all_tables
+where owner = 'C##IDEV';
+
+
+============= 실행 내용  ===================
+
+
+SQL*Plus: Release 18.0.0.0.0 - Production on 목 1월 16 11:58:19 2025
+Version 18.4.0.0.0
+
+Copyright (c) 1982, 2018, Oracle.  All rights reserved.
+
+사용자명 입력: sys as sysdba
+비밀번호 입력:
+
+다음에 접속됨:
+Oracle Database 18c Express Edition Release 18.0.0.0.0 - Production
+Version 18.4.0.0.0
+
+SQL> col object_name format a20
+SQL> col object_type format a20
+SQL> select object_name,object_type
+  2  from all_objects
+  3  where owner = 'c##idev';
+
+선택된 레코드가 없습니다.
+
+SQL> select object_name,object_type
+  2  from all_objects
+  3  where owner = 'C##IDEV';
+
+OBJECT_NAME          OBJECT_TYPE
+-------------------- --------------------
+TBLTEST              TABLE
+TBL_EXAM             TABLE
+TBL_STRING           TABLE
+TBL_NUMBER           TABLE
+TBL_JAVAWORD         TABLE
+TBL_CONSTR           TABLE
+SYS_C007302          INDEX
+SYS_C007303          INDEX
+TBL_DICT             TABLE
+SYS_C007307          INDEX
+SYS_C007308          INDEX
+
+11 행이 선택되었습니다.
+
+SQL> col owner format a20
+SQL> col table_name
+SP2-0046: COLUMN 'table_name'이(가) 정의되지 않았습니다.
+SQL> col table_name format a20
+SQL> col tablespace_name format a20
+SQL> select owner , table_name, tablespace_name
+  2  from all_tables
+  3  where owner = 'C##IDEV';
+
+OWNER                TABLE_NAME           TABLESPACE_NAME
+-------------------- -------------------- --------------------
+C##IDEV              TBLTEST              USERS
+C##IDEV              TBL_EXAM             USERS
+C##IDEV              TBL_STRING           USERS
+C##IDEV              TBL_NUMBER           USERS
+C##IDEV              TBL_CONSTR           USERS
+C##IDEV              TBL_DICT             USERS
+C##IDEV              TBL_JAVAWORD         USERS
+
+7 행이 선택되었습니다.
+
+SQL>
+
