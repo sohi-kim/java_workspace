@@ -1,5 +1,6 @@
 package day3;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,21 @@ public class CartMenu {
     // switch 완성해서 장바구니 테스트 해보세요.
   }
 
+  public void showMyOrderList(){
+    System.out.println("~~~~~" + this.customerId + " 님 구매 목록~~~~~");
+    // List<BuyVo> myOrderList = dao.selectByCustomerId(this.customerId);
+    // for문 출력                    ㄴ 조회 결과는 날짜 내림차순 정렬 
+    // for(BuyVo b : myOrderList) {
+    //   System.out.println(String.format("%-20s  %-15s  %-10s ",b.getPcode(),b.getQuantity(),b.getBuy_date()));
+    // }
+    List<CustomerOrderVO> myOrderList = dao.selectCustomerOrderList(customerId);
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    for(CustomerOrderVO c : myOrderList) {
+        System.out.println(String.format("%-20s \t%,6d  %3d  %-20s  %-4s ",
+                c.getPname(),c.getPrice(),c.getQuantity(),sdf.format(c.getBuy_date()),c.getCategory()));
+    }
+  }
+
   public void start() {
     System.out.println("[[[[ 우리 쇼핑몰 ]]]]");
     System.out.print("사용자 아이디 입력하세요. >>> ");
@@ -47,26 +63,29 @@ public class CartMenu {
       System.out.print("메뉴 선택 하세요. >>> ");
       String menu = System.console().readLine();
       switch (menu) {
+        case "M","m":
+          showMyOrderList();         // sql SELECT 실행 - tbl_buy 테이블
+          break;
         case "C","c":
-          showProductByCategory();
+          showProductByCategory();    // sql SELECT 실행 - tbl_product 테이블
           break;
         case "P","p":
-          showProductByKeyword();
+          showProductByKeyword();    // sql SELECT 실행 - tbl_product 테이블
+          break;
         case "A","a":
-          addCartItem();
+          addCartItem();            // cart 리스트 항목 추가
           break;
         case "L","l":
-          showCartList();
+          showCartList();          // cart 리스트 목록 출력
           break;
         case "R","r":
-          removeCartItem();
+          removeCartItem();        // cart 리스트 항목 삭제
           break;
         case "B","b":
-          buyOneItem();
+          buyOneItem();           // sql INSERT 실행 - tbl_buy 테이블
           break;
         case "Y","y":
-          buyCartItems();
-          
+          buyCartItems();         // sql INSERT 여러개 batch 실행 - tbl_buy 테이블
           break;  
         case "X","x":
           run=false;
@@ -92,7 +111,12 @@ public class CartMenu {
   public void showProductByKeyword(){
       System.out.print("상품명 키워드 입력 >>> ");
       String pname = System.console().readLine();
-      
+      List<Product> list = productDao.searchByKeyword(pname);
+    // 조회 결과 for 문으로 출력하기 (상품명, 상품코드, 가격)
+    for(Product p : list) {
+      System.out.println(String.format("%-20s  %-15s  %,6d ",p.getPname(),p.getPcode(),p.getPrice()));
+    }
+
   }
 
   public void showMenu(){

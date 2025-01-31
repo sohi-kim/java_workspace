@@ -26,7 +26,7 @@ public class ObjectMappingTest {
             Customer customer = null;
             if(rs.next()){   //조회된 행이 있을 때만
                 // 컬럼값을 객체로 매핑
-                customer = new Customer(rs.getString(1), 
+                customer = new Customer(rs.getString(1),  // 첫번째 컬럼값 -> Customer 생성자 첫번째 인자
                                 rs.getString(2), 
                                 rs.getString(3), 
                                 rs.getInt(4), 

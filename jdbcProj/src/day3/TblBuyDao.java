@@ -3,7 +3,9 @@ package day3;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TblBuyDao {
@@ -76,4 +78,32 @@ public class TblBuyDao {
       return result;
   }
 
+  public List<BuyVo> selectByCustomerId(String customerId) {
+    List<BuyVo> list = new ArrayList<>();
+    String sql="SELECT * FROM tbl_buy WHERE custom_id = ? ORDER BY buy_date DESC";
+    try (
+        Connection connection = getConnection();
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+    ) {
+        pstmt.setString(1, customerId);
+        ResultSet rs = pstmt.executeQuery();
+        BuyVo vo = null;
+        while (rs.next()) {
+          vo = new BuyVo(rs.getInt(1), rs.getString(2), rs.getString(3), 
+              rs.getInt(4), rs.getDate(5));
+          list.add(vo);
+        }
+
+    } catch (Exception e) {
+        System.out.println("예외 : " + e.getMessage());
+    }
+    return list;
+  }
+
+  public List<CustomerOrderVO> selectCustomerOrderList(String customerId){
+       List<CustomerOrderVO> list = new ArrayList<>();
+
+       
+       return list;
+  }
 }

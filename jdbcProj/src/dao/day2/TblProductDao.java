@@ -141,7 +141,7 @@ public class TblProductDao {
 
     // 상품 키워드로 조회 - n개 행이 결과값
     public List<Product> searchByKeyword(String keyword){
-        String sql = "SELECT * FROM TBL_PRODUCT LIKE '%' || ? || '%' ";
+        String sql = "SELECT * FROM TBL_PRODUCT WHERE pname LIKE '%' || ? || '%' ";
         List<Product> list = new ArrayList<>();
         try (Connection connection = getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);

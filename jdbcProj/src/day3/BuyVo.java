@@ -20,4 +20,7 @@ public class BuyVo {
   private String pcode;
   private int quantity;
   private Date buy_date;
+ 
+
+  
 }
