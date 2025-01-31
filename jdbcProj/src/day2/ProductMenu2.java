@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import day1.OracleConnectionUtil;
-import vo.day1.Product;
+import vo.Product;
 
 public class ProductMenu2 {
   public static void main(String[] args) {

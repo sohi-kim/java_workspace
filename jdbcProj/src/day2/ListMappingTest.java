@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import day1.OracleConnectionUtil;
-import vo.day1.Customer;
+import vo.Customer;
 
 // select 다양한 검색 조건으로 실행하면 행의 개수가 n 개 입니다.
 // 1.     -> while 반복. 조건식은 rs.next()

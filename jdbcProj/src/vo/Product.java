@@ -1,4 +1,4 @@
-package vo.day1;
+package vo;
 
 // 오라클 tbl_product 테이블의 컬럼 구성(이름과 형식)에 
 // 따라 클래스의 변수를 정의.

@@ -1,4 +1,4 @@
-package dao.day2;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import vo.day1.Product;
+import vo.Product;
 
 public class TblProductDao {
     // 싱글톤 패턴 정의

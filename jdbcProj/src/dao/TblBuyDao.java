@@ -1,4 +1,4 @@
-package day3;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import vo.BuyVo;
+import vo.CustomerOrderVO;
 
 public class TblBuyDao {
 
@@ -103,7 +106,29 @@ public class TblBuyDao {
   public List<CustomerOrderVO> selectCustomerOrderList(String customerId){
        List<CustomerOrderVO> list = new ArrayList<>();
 
-       
+       String sql="SELECT pname ,price ,quantity, buy_date , category \r\n" + 
+                  "FROM TBL_PRODUCT tp \r\n" + 
+                  "JOIN TBL_BUY tb \r\n" + 
+                  "ON tp.PCODE = tb.PCODE\r\n" + 
+                  "WHERE CUSTOM_ID = ?\r\n" + 
+                  "ORDER BY BUY_DATE DESC";
+       try (
+           Connection connection = getConnection();
+           PreparedStatement pstmt = connection.prepareStatement(sql);
+       ) {
+           pstmt.setString(1, customerId);
+           ResultSet rs = pstmt.executeQuery();
+           CustomerOrderVO vo = null;
+           while (rs.next()) {
+             vo = new CustomerOrderVO(rs.getString(1), 
+                  rs.getInt(2), rs.getInt(3), 
+                  rs.getDate(4),rs.getString(5));
+             list.add(vo);
+           }
+   
+       } catch (Exception e) {
+           System.out.println("예외 : " + e.getMessage());
+       }
        return list;
   }
 }

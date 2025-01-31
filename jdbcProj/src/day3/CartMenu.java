@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import dao.day2.TblProductDao;
-import vo.day1.Product;
+import dao.TblBuyDao;
+import dao.TblProductDao;
+import vo.BuyVo;
+import vo.CustomerOrderVO;
+import vo.Product;
 
 // 구매 테이블의 데이터를 조작하는 예제
 // 장바구니 구현 예제
@@ -40,11 +43,21 @@ public class CartMenu {
     //   System.out.println(String.format("%-20s  %-15s  %-10s ",b.getPcode(),b.getQuantity(),b.getBuy_date()));
     // }
     List<CustomerOrderVO> myOrderList = dao.selectCustomerOrderList(customerId);
+    // 날짜와 시간 출력 형식 지정.
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     for(CustomerOrderVO c : myOrderList) {
         System.out.println(String.format("%-20s \t%,6d  %3d  %-20s  %-4s ",
-                c.getPname(),c.getPrice(),c.getQuantity(),sdf.format(c.getBuy_date()),c.getCategory()));
+                c.getPname(),c.getPrice(),c.getQuantity(),
+                sdf.format(c.getBuy_date()),c.getCategory()));
     }
+  }
+
+  public void showMenu(){
+    System.out.println(".".repeat(70));
+    System.out.println("[C] 카테고리별 상품 조회    [P] 상품명 키워드 검색  [M]나의 구매내역");
+    System.out.println("[B] 바로 구매하기     [X] 구매 종료");
+    System.out.println("::장바구니::[A] 담기  [L] 목록  [R] 삭제   [Y] 모두 구매 ");
+    System.out.println(".".repeat(70));
   }
 
   public void start() {
@@ -52,7 +65,6 @@ public class CartMenu {
     System.out.print("사용자 아이디 입력하세요. >>> ");
     customerId = System.console().readLine();
     // 1. 아이디 존재 여부 확인 필요. 아이디 존재할때만 아래 실행하기-> 각자 해보세요
-
     // 상품 가격표 보여주기
     this.priceTables = productDao.getPriceTable();
     System.out.println("쇼핑몰 상품 가격표 : " + priceTables);
@@ -117,14 +129,6 @@ public class CartMenu {
       System.out.println(String.format("%-20s  %-15s  %,6d ",p.getPname(),p.getPcode(),p.getPrice()));
     }
 
-  }
-
-  public void showMenu(){
-    System.out.println(".".repeat(70));
-    System.out.println("[C] 카테고리별 상품 조회    [P] 상품명 키워드 검색  [M]나의 구매내역");
-    System.out.println("[B] 바로 구매하기     [X] 구매 종료");
-    System.out.println("::장바구니::[A] 담기  [L] 목록  [R] 삭제   [Y] 모두 구매 ");
-    System.out.println(".".repeat(70));
   }
 
   // 바로 구매하기 - 1개 행 insert 
